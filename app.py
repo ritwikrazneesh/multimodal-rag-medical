@@ -1,9 +1,13 @@
 import os
+
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
+
+
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
-from langchain_groq import ChatGroq
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.prompts import PromptTemplate
@@ -11,7 +15,7 @@ from langchain.prompts import PromptTemplate
 
 load_dotenv()
 working_dir = os.path.dirname(os.path.abspath(__file__))
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 VECTORSTORE_DIR = os.path.join(working_dir, "vector_db_dir")
 
 
@@ -26,11 +30,11 @@ def load_vectorstore():
 
 @st.cache_resource
 def build_chat_chain(_vectorstore, _memory):
-    llm = ChatGroq(
-        model="meta-llama/llama-4-scout-17b-16e-instruct",
-        temperature=0.5,
-        groq_api_key=GROQ_API_KEY
-    )
+    llm = ChatGoogleGenerativeAI(
+    model="models/gemini-2.5-flash",
+    temperature=0.5,
+    google_api_key=GOOGLE_API_KEY
+)
 
     retriever = _vectorstore.as_retriever(search_kwargs={"k": 5})
 
