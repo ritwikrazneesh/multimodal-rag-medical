@@ -33,43 +33,47 @@ A Multimodal Retrieval-Augmented Generation (RAG) agent designed to serve as an 
 
 ### 1. Clone the Repository
 Clone the project files to your local machine:
+```
 git clone https://github.com/ritwikrazneesh/multimodal-rag-medical.git
 cd multimodal-rag-medical
-
+```
 ### 2. Create a Virtual Environment (Recommended)
 It is best practice to run this project in a virtual environment.
 
-# Windows
+**Windows**
+```
 python -m venv venv
 venv\Scripts\activate
-
-# Mac/Linux
+```
+**Mac/Linux**
+```
 python3 -m venv venv
 source venv/bin/activate
-
+```
 ### 3. Install Dependencies
 Install the required Python libraries:
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
 ### 4. Configure Environment Variables
 Create a .env file in the root directory and add your API keys. This ensures the application can authenticate with the LLM provider.
 
-OPENAI_API_KEY=your_api_key_here
-# or
-GOOGLE_API_KEY=your_google_key_here
+```OPENAI_API_KEY=your_api_key_here```
+or
+```GOOGLE_API_KEY=your_google_key_here```
 
 ## Usage Guide
 
 ### Step 1: Ingest Data
 Run the fetch script to download relevant medical articles or data from MedlinePlus. This prepares your raw data source.
-python fetch_medlineplus.py
+```python fetch_medlineplus.py```
 
 ### Step 2: Build Vector Index
 Convert the downloaded documents into a vector database. This step is crucial for the RAG system to perform semantic searches.
-python vectorize_documents.py
+```python vectorize_documents.py```
 
 ### Step 3: Launch the Chatbot
 Start the Streamlit application to interact with the chatbot.
-streamlit run app.py
+```streamlit run app.py```
 
 Once running, open your web browser to http://localhost:8501.
+
