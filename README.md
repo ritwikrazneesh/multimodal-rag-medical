@@ -34,7 +34,7 @@ A Multimodal Retrieval-Augmented Generation (RAG) agent designed to serve as an 
 ### 1. Clone the Repository
 Clone the project files to your local machine:
 ```
-git clone https://github.com/ritwikrazneesh/multimodal-rag-medical.git
+git clone https://github.com/ritwikrazneesh/rag-medical-chatbot.git
 cd multimodal-rag-medical
 ```
 ### 2. Create a Virtual Environment (Recommended)
@@ -76,4 +76,5 @@ Start the Streamlit application to interact with the chatbot.
 ```streamlit run app.py```
 
 Once running, open your web browser to http://localhost:8501.
+
 
